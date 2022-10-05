@@ -1,10 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+import BackCommon from "../components/BackCommon";
 
 const Contact = () => {
   return (
-    <div>
-      <h1>Contact Page</h1>
-    </div>
+    <>
+      <BackCommon />
+      <div>
+        <h1>Contact Page</h1>
+      </div>
+    </>
   );
 };
 

@@ -1,10 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+import BackCommon from "../components/BackCommon";
 
 const AboutMe = () => {
   return (
-    <div>
-      <h1>AboutMe Page</h1>
-    </div>
+    <>
+      <BackCommon />
+      <div>
+        <h1>AboutMe Page</h1>
+      </div>
+    </>
   );
 };
 
