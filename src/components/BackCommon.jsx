@@ -1,16 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-const BackCommon = () => {
+const BackCommon = (pathname) => {
+  console.log("pathname: ", pathname);
   return (
     <BackCommonWrap>
       <MenuWrap>
         <MenuContainer>
           <MenuListContainer>
-            <li>Intro</li>
-            <li>About Me</li>
-            <li>Project</li>
-            <li>Contact</li>
+            <MenuList font={pathname.pathname === "/" ? true : false}>
+              Intro
+            </MenuList>
+            <MenuList font={pathname.pathname === "/aboutme" ? true : false}>
+              About Me
+            </MenuList>
+            <MenuList font={pathname.pathname === "/project" ? true : false}>
+              Project
+            </MenuList>
+            <MenuList font={pathname.pathname === "/contact" ? true : false}>
+              Contact
+            </MenuList>
           </MenuListContainer>
         </MenuContainer>
       </MenuWrap>
@@ -50,11 +59,13 @@ const MenuListContainer = styled.ul`
   margin: 0;
   padding: 0;
   transform: skew(20deg) translate(177px);
-  & li {
-    list-style: none;
-    font-size: 40px;
-    margin-bottom: 68px;
-    font-family: GmarketSansMedium;
-    color: #e8eae7;
-  }
+`;
+
+const MenuList = styled.li`
+  list-style: none;
+  font-size: 40px;
+  margin-bottom: 68px;
+  font-family: GmarketSansMedium;
+  color: ${(props) => (props.font ? "#E0A974" : "#E8EAE7")};
+  font-weight: ${(props) => (props.font ? "700" : "500")};
 `;

@@ -1,14 +1,13 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import BackCommon from "../components/BackCommon";
 
 const AboutMe = () => {
+  const location = useLocation();
   return (
     <>
-      <BackCommon />
-      <div>
-        <h1>AboutMe Page</h1>
-      </div>
+      <BackCommon pathname={location.pathname} />
     </>
   );
 };

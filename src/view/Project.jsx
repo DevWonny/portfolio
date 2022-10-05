@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 import BackCommon from "../components/BackCommon";
 
 const Project = () => {
+  const location = useLocation();
   return (
     <>
-      <BackCommon />
-      <div>
-        <h1>Project Page</h1>
-      </div>
+      <BackCommon pathname={location.pathname} />
     </>
   );
 };
