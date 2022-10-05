@@ -1,23 +1,45 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const BackCommon = (pathname) => {
-  console.log("pathname: ", pathname);
+  const navigate = useNavigate();
+
   return (
     <BackCommonWrap>
       <MenuWrap>
         <MenuContainer>
           <MenuListContainer>
-            <MenuList font={pathname.pathname === "/" ? true : false}>
+            <MenuList
+              font={pathname.pathname === "/" ? true : false}
+              onClick={() => {
+                navigate("/");
+              }}
+            >
               Intro
             </MenuList>
-            <MenuList font={pathname.pathname === "/aboutme" ? true : false}>
+            <MenuList
+              font={pathname.pathname === "/aboutme" ? true : false}
+              onClick={() => {
+                navigate("/aboutme");
+              }}
+            >
               About Me
             </MenuList>
-            <MenuList font={pathname.pathname === "/project" ? true : false}>
+            <MenuList
+              font={pathname.pathname === "/project" ? true : false}
+              onClick={() => {
+                navigate("/project");
+              }}
+            >
               Project
             </MenuList>
-            <MenuList font={pathname.pathname === "/contact" ? true : false}>
+            <MenuList
+              font={pathname.pathname === "/contact" ? true : false}
+              onClick={() => {
+                navigate("/contact");
+              }}
+            >
               Contact
             </MenuList>
           </MenuListContainer>
@@ -68,4 +90,5 @@ const MenuList = styled.li`
   font-family: GmarketSansMedium;
   color: ${(props) => (props.font ? "#E0A974" : "#E8EAE7")};
   font-weight: ${(props) => (props.font ? "700" : "500")};
+  cursor: pointer;
 `;
