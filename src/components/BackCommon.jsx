@@ -5,7 +5,14 @@ const BackCommon = () => {
   return (
     <BackCommonWrap>
       <MenuWrap>
-        <MenuContainer />
+        <MenuContainer>
+          <MenuListContainer>
+            <li>Intro</li>
+            <li>About Me</li>
+            <li>Project</li>
+            <li>Contact</li>
+          </MenuListContainer>
+        </MenuContainer>
       </MenuWrap>
     </BackCommonWrap>
   );
@@ -32,4 +39,22 @@ const MenuContainer = styled.div`
   height: 100%;
   background-color: #3a667f;
   transform: skew(-20deg) translate(-177px);
+`;
+
+const MenuListContainer = styled.ul`
+  width: 260px;
+  height: 440px;
+  position: absolute;
+  top: 300px;
+  left: 180px;
+  margin: 0;
+  padding: 0;
+  transform: skew(20deg) translate(177px);
+  & li {
+    list-style: none;
+    font-size: 40px;
+    margin-bottom: 68px;
+    font-family: GmarketSansMedium;
+    color: #e8eae7;
+  }
 `;
