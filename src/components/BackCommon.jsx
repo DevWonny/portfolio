@@ -53,7 +53,7 @@ export default BackCommon;
 
 const BackCommonWrap = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 200vh;
   background: #e8eae7;
   position: absolute;
   z-index: -1;
@@ -63,6 +63,7 @@ const MenuWrap = styled.div`
   width: 725px;
   height: 100%;
   overflow: hidden;
+  position: fixed;
 `;
 
 const MenuContainer = styled.div`
