@@ -8,12 +8,14 @@ import Contact from "./view/Contact";
 
 function App() {
   return (
-    <>
-      <Intro />
-      <AboutMe />
-      <Project />
-      <Contact />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Intro />} />
+        <Route path="/aboutme" element={<AboutMe />} />
+        <Route path="/project" element={<Project />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
