@@ -17,7 +17,7 @@ const Intro = () => {
 export default Intro;
 
 const IntroWarp = styled.div`
-  width: 50%;
+  width: 55%;
   height: 50%;
   position: absolute;
   top: 250px;
