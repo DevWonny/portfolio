@@ -85,6 +85,8 @@ const MenuListContainer = styled.ul`
 `;
 
 const MenuList = styled.li`
+  position: relative;
+  display: inline-block;
   list-style: none;
   font-size: 40px;
   margin-bottom: 68px;
@@ -92,4 +94,21 @@ const MenuList = styled.li`
   color: ${(props) => (props.font ? "#E0A974" : "#E8EAE7")};
   font-weight: ${(props) => (props.font ? "700" : "500")};
   cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #e0a974;
+    transition-duration: 1s;
+  }
+
+  &:hover {
+    &::after {
+      width: ${(props) => (props.font ? "0" : "100%")};
+    }
+  }
 `;
