@@ -141,6 +141,16 @@ const CareerContainer = styled.div`
   height: 90px;
   position: relative;
   margin-top: 10px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #a0bdd0;
+  }
 `;
 
 const CareerText = styled.div`
