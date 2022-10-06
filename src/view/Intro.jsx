@@ -9,8 +9,20 @@ const Intro = () => {
   return (
     <>
       <BackCommon pathname={location.pathname} />
+      <IntroWarp>Intro Text Location</IntroWarp>
     </>
   );
 };
 
 export default Intro;
+
+const IntroWarp = styled.div`
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 250px;
+  right: 5%;
+  border: 1px solid #000;
+  text-align: center;
+  line-height: 450px;
+`;
