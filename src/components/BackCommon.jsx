@@ -103,7 +103,7 @@ const MenuList = styled.li`
     width: 0;
     height: 2px;
     background-color: #e0a974;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
   }
 
   &:hover {
