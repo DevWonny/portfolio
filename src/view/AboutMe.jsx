@@ -52,7 +52,13 @@ const AboutMe = () => {
         {/* Career */}
         <CareerContainer>
           <AboutTitle>Career</AboutTitle>
-          <CareerText></CareerText>
+          <CareerText>
+            <p>
+              프래프 프론트엔드 개발팀 근무
+              <br />
+              <span>2022.02 ~ 2022.08(7개월)</span>
+            </p>
+          </CareerText>
         </CareerContainer>
 
         {/* Stack */}
@@ -111,7 +117,6 @@ const AboutPictureContainer = styled.div`
 const AboutProfileContainer = styled.div`
   width: 700px;
   height: 100%;
-  background: purple;
 `;
 const AboutProfileText = styled.div`
   width: 100%;
@@ -133,18 +138,21 @@ const AboutProfileText = styled.div`
 
 const CareerContainer = styled.div`
   width: 100%;
-  height: 300px;
-  border: 1px solid red;
+  height: 90px;
   position: relative;
   margin-top: 10px;
 `;
 
 const CareerText = styled.div`
   width: 700px;
-  height: 100%;
-  background: red;
+  height: 80px;
+  color: #a0bdd0;
   position: absolute;
   right: 0;
+  & span {
+    margin-left: 35px;
+    font-size: 14px;
+  }
 `;
 
 const StackContainer = styled.div`
