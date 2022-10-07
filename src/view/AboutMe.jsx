@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import BackCommon from "../components/BackCommon";
 import AboutPicture from "../assets/AboutPicture.svg";
 
@@ -8,6 +8,7 @@ const AboutMe = () => {
   // 경력
   // 기술 스택
   const location = useLocation();
+
   return (
     <>
       <BackCommon pathname={location.pathname} />
@@ -71,31 +72,39 @@ const AboutMe = () => {
           <StackItemWrap>
             <StackItemContainer>
               <StackItemTitle>HTML / CSS</StackItemTitle>
-              <StackItemPercent>
+              <StackItemPercent stack="HTML">
                 <StackItemCenterPercent>95%</StackItemCenterPercent>
               </StackItemPercent>
             </StackItemContainer>
 
             <StackItemContainer>
               <StackItemTitle>JavaScript</StackItemTitle>
-              <StackItemPercent>85%</StackItemPercent>
+              <StackItemPercent stack="JS">
+                <StackItemCenterPercent>85%</StackItemCenterPercent>
+              </StackItemPercent>
             </StackItemContainer>
 
             <StackItemContainer>
               <StackItemTitle>React</StackItemTitle>
-              <StackItemPercent>85%</StackItemPercent>
+              <StackItemPercent stack="REACT">
+                <StackItemCenterPercent>85%</StackItemCenterPercent>
+              </StackItemPercent>
             </StackItemContainer>
           </StackItemWrap>
 
           <StackItemWrap second={true}>
             <StackItemContainer>
               <StackItemTitle>JQuery</StackItemTitle>
-              <StackItemPercent>80%</StackItemPercent>
+              <StackItemPercent stack="JQUERY">
+                <StackItemCenterPercent>80%</StackItemCenterPercent>
+              </StackItemPercent>
             </StackItemContainer>
 
             <StackItemContainer>
               <StackItemTitle>TypeScript</StackItemTitle>
-              <StackItemPercent>75%</StackItemPercent>
+              <StackItemPercent stack="TS">
+                <StackItemCenterPercent>75%</StackItemCenterPercent>
+              </StackItemPercent>
             </StackItemContainer>
           </StackItemWrap>
         </StackContainer>
@@ -244,14 +253,24 @@ const StackItemPercent = styled.div`
   height: 160px;
   border-radius: 50%;
   position: relative;
-  background: red;
+  background: conic-gradient(#3f8bc9 0% 72%, #f2f2f2 72% 100%);
+  background: ${(props) =>
+    props.stack === "HTML"
+      ? "conic-gradient(#FF5722 0% 95%, #fff 95% 100%)"
+      : props.stack === "JS"
+      ? "conic-gradient(#F0DB4F 0% 85%, #fff 85% 100%)"
+      : props.stack === "REACT"
+      ? "conic-gradient(#00CCFF 0% 85%, #fff 85% 100%)"
+      : props.stack === "JQUERY"
+      ? "conic-gradient(#21ACE2 0% 80%, #fff 80% 100%)"
+      : "conic-gradient(#3178C6 0% 75%, #fff 75% 100%)"};
 `;
 
 const StackItemCenterPercent = styled.div`
   // 중심 작은원
   width: 140px;
   height: 140px;
-  background-color: #fff;
+  background-color: #e8eae7;
   position: absolute;
   top: 50%;
   left: 50%;
