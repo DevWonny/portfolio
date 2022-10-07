@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import BackCommon from "../components/BackCommon";
 import AboutPicture from "../assets/AboutPicture.svg";
 
@@ -8,6 +8,49 @@ const AboutMe = () => {
   // 경력
   // 기술 스택
   const location = useLocation();
+
+  const HtmlRef = useRef(null);
+  const JSRef = useRef(null);
+  const ReactRef = useRef(null);
+  const JqueryRef = useRef(null);
+  const TSRef = useRef(null);
+
+  // circle animation
+  let animationTime = 0;
+  const htmlAnimation = setInterval(() => {
+    if (HtmlRef.current) {
+      HtmlRef.current.style.background = `conic-gradient(#FF5722 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
+      animationTime++ >= 95 && clearInterval(htmlAnimation);
+    }
+  }, 20);
+
+  const jsAnimation = setInterval(() => {
+    if (JSRef.current) {
+      JSRef.current.style.background = `conic-gradient(#F0DB4F 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
+      animationTime++ >= 85 && clearInterval(jsAnimation);
+    }
+  }, 20);
+
+  const reactAnimation = setInterval(() => {
+    if (ReactRef.current) {
+      ReactRef.current.style.background = `conic-gradient(#00CCFF 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
+      animationTime++ >= 85 && clearInterval(reactAnimation);
+    }
+  }, 20);
+
+  const jqueryAnimation = setInterval(() => {
+    if (JqueryRef.current) {
+      JqueryRef.current.style.background = `conic-gradient(#21ACE2 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
+      animationTime++ >= 80 && clearInterval(jqueryAnimation);
+    }
+  }, 20);
+
+  const tsAnimation = setInterval(() => {
+    if (TSRef.current) {
+      TSRef.current.style.background = `conic-gradient(#3178C6 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
+      animationTime++ >= 75 && clearInterval(tsAnimation);
+    }
+  }, 20);
 
   return (
     <>
@@ -72,21 +115,21 @@ const AboutMe = () => {
           <StackItemWrap>
             <StackItemContainer>
               <StackItemTitle>HTML / CSS</StackItemTitle>
-              <StackItemPercent stack="HTML">
+              <StackItemPercent stack="HTML" ref={HtmlRef}>
                 <StackItemCenterPercent>95%</StackItemCenterPercent>
               </StackItemPercent>
             </StackItemContainer>
 
             <StackItemContainer>
               <StackItemTitle>JavaScript</StackItemTitle>
-              <StackItemPercent stack="JS">
+              <StackItemPercent stack="JS" ref={JSRef}>
                 <StackItemCenterPercent>85%</StackItemCenterPercent>
               </StackItemPercent>
             </StackItemContainer>
 
             <StackItemContainer>
               <StackItemTitle>React</StackItemTitle>
-              <StackItemPercent stack="REACT">
+              <StackItemPercent stack="REACT" ref={ReactRef}>
                 <StackItemCenterPercent>85%</StackItemCenterPercent>
               </StackItemPercent>
             </StackItemContainer>
@@ -95,14 +138,14 @@ const AboutMe = () => {
           <StackItemWrap second={true}>
             <StackItemContainer>
               <StackItemTitle>JQuery</StackItemTitle>
-              <StackItemPercent stack="JQUERY">
+              <StackItemPercent stack="JQUERY" ref={JqueryRef}>
                 <StackItemCenterPercent>80%</StackItemCenterPercent>
               </StackItemPercent>
             </StackItemContainer>
 
             <StackItemContainer>
               <StackItemTitle>TypeScript</StackItemTitle>
-              <StackItemPercent stack="TS">
+              <StackItemPercent stack="TS" ref={TSRef}>
                 <StackItemCenterPercent>75%</StackItemCenterPercent>
               </StackItemPercent>
             </StackItemContainer>
@@ -253,17 +296,6 @@ const StackItemPercent = styled.div`
   height: 160px;
   border-radius: 50%;
   position: relative;
-  background: conic-gradient(#3f8bc9 0% 72%, #f2f2f2 72% 100%);
-  background: ${(props) =>
-    props.stack === "HTML"
-      ? "conic-gradient(#FF5722 0% 95%, #fff 95% 100%)"
-      : props.stack === "JS"
-      ? "conic-gradient(#F0DB4F 0% 85%, #fff 85% 100%)"
-      : props.stack === "REACT"
-      ? "conic-gradient(#00CCFF 0% 85%, #fff 85% 100%)"
-      : props.stack === "JQUERY"
-      ? "conic-gradient(#21ACE2 0% 80%, #fff 80% 100%)"
-      : "conic-gradient(#3178C6 0% 75%, #fff 75% 100%)"};
 `;
 
 const StackItemCenterPercent = styled.div`
