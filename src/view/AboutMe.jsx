@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import BackCommon from "../components/BackCommon";
@@ -15,38 +15,63 @@ const AboutMe = () => {
   const JqueryRef = useRef(null);
   const TSRef = useRef(null);
 
+  const observeRef = useRef(null);
+
+  const [scrollState, setScrollState] = useState(false);
+
+  // intersection
+  // observer 활용해서 해당 ref 인식 시 animation 움직이도록
+  const onIntersect = async ([entry], observer) => {
+    if (entry.isIntersecting) {
+      observer.unobserve(entry.target);
+      setScrollState(true);
+      observer.observe(entry.target);
+    }
+  };
+
+  useEffect(() => {
+    let observer;
+    if (observeRef.current) {
+      observer = new IntersectionObserver(onIntersect, {
+        threshold: 0.8,
+      });
+      observer.observe(observeRef.current);
+    }
+    return () => observer && observer.disconnect();
+  }, [onIntersect]);
+
   // circle animation
   let animationTime = 0;
   const htmlAnimation = setInterval(() => {
-    if (HtmlRef.current) {
+    if (HtmlRef.current && scrollState) {
       HtmlRef.current.style.background = `conic-gradient(#FF5722 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
       animationTime++ >= 95 && clearInterval(htmlAnimation);
     }
   }, 20);
 
   const jsAnimation = setInterval(() => {
-    if (JSRef.current) {
+    if (JSRef.current && scrollState) {
       JSRef.current.style.background = `conic-gradient(#F0DB4F 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
       animationTime++ >= 85 && clearInterval(jsAnimation);
     }
   }, 20);
 
   const reactAnimation = setInterval(() => {
-    if (ReactRef.current) {
+    if (ReactRef.current && scrollState) {
       ReactRef.current.style.background = `conic-gradient(#00CCFF 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
       animationTime++ >= 85 && clearInterval(reactAnimation);
     }
   }, 20);
 
   const jqueryAnimation = setInterval(() => {
-    if (JqueryRef.current) {
+    if (JqueryRef.current && scrollState) {
       JqueryRef.current.style.background = `conic-gradient(#21ACE2 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
       animationTime++ >= 80 && clearInterval(jqueryAnimation);
     }
   }, 20);
 
   const tsAnimation = setInterval(() => {
-    if (TSRef.current) {
+    if (TSRef.current && scrollState) {
       TSRef.current.style.background = `conic-gradient(#3178C6 0 ${animationTime}%, #fff ${animationTime}% 100% )`;
       animationTime++ >= 75 && clearInterval(tsAnimation);
     }
@@ -110,7 +135,7 @@ const AboutMe = () => {
         {/* 각 언어의 로고 가져오기 */}
         {/* percent animation 구현 */}
 
-        <StackContainer>
+        <StackContainer ref={observeRef}>
           <AboutTitle>Stack</AboutTitle>
           <StackItemWrap>
             <StackItemContainer>
@@ -296,6 +321,7 @@ const StackItemPercent = styled.div`
   height: 160px;
   border-radius: 50%;
   position: relative;
+  background: #fff;
 `;
 
 const StackItemCenterPercent = styled.div`
