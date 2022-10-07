@@ -62,7 +62,43 @@ const AboutMe = () => {
         </CareerContainer>
 
         {/* Stack */}
-        <StackContainer></StackContainer>
+        {/* HTML/CSS - 95, JavaScript- 85 , JQuery-80, React-85, TypeScript -70*/}
+        {/* 각 언어의 로고 가져오기 */}
+        {/* percent animation 구현 */}
+
+        <StackContainer>
+          <AboutTitle>Stack</AboutTitle>
+          <StackItemWrap>
+            <StackItemContainer>
+              <StackItemTitle>HTML / CSS</StackItemTitle>
+              <StackItemPercent>
+                <StackItemCenterPercent>95%</StackItemCenterPercent>
+              </StackItemPercent>
+            </StackItemContainer>
+
+            <StackItemContainer>
+              <StackItemTitle>JavaScript</StackItemTitle>
+              <StackItemPercent>85%</StackItemPercent>
+            </StackItemContainer>
+
+            <StackItemContainer>
+              <StackItemTitle>React</StackItemTitle>
+              <StackItemPercent>85%</StackItemPercent>
+            </StackItemContainer>
+          </StackItemWrap>
+
+          <StackItemWrap second={true}>
+            <StackItemContainer>
+              <StackItemTitle>JQuery</StackItemTitle>
+              <StackItemPercent>80%</StackItemPercent>
+            </StackItemContainer>
+
+            <StackItemContainer>
+              <StackItemTitle>TypeScript</StackItemTitle>
+              <StackItemPercent>75%</StackItemPercent>
+            </StackItemContainer>
+          </StackItemWrap>
+        </StackContainer>
       </AboutWarp>
     </>
   );
@@ -167,5 +203,63 @@ const CareerText = styled.div`
 
 const StackContainer = styled.div`
   width: 100%;
-  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 10px 0;
+  padding-bottom: 70px;
+  border-bottom: 3px solid #3a667f;
 `;
+
+const StackItemWrap = styled.div`
+  width: 100%;
+  height: 300px;
+  position: relative;
+  margin-bottom: 30px;
+  top: 70px;
+  display: flex;
+  justify-content: ${(props) =>
+    props.second ? "space-around" : "space-between"};
+`;
+
+const StackItemContainer = styled.div`
+  width: 30%;
+  height: 100%;
+  border-top: 1px solid #a0bdd0;
+  border-bottom: 1px solid #a0bdd0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StackItemTitle = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+  color: #a0bdd0;
+`;
+
+const StackItemPercent = styled.div`
+  // 큰 원
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  position: relative;
+  background: red;
+`;
+
+const StackItemCenterPercent = styled.div`
+  // 중심 작은원
+  width: 140px;
+  height: 140px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 140px;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+`;
+
+const StackItemComents = styled.div``;

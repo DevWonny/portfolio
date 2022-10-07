@@ -53,8 +53,6 @@ export default BackCommon;
 
 const BackCommonWrap = styled.div`
   width: 100%;
-  /* height: 100vh; */
-  background: #e8eae7;
   position: absolute;
   z-index: -1;
 `;

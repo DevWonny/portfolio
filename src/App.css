@@ -11,6 +11,9 @@
   font-family: GmarketSansMedium;
 }
 
+body {
+  background-color: #e8eae7;
+}
 h1 {
   margin: 0;
 }
