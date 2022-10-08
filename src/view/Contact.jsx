@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import BackCommon from "../components/BackCommon";
 import MailImage from "../assets/MailImage.svg";
 import PhoneImage from "../assets/PhoneImage.svg";
-import GitImage from "../assets/GitHub-Mark-120px-plus.png";
+import GitImage from "../assets/GitLogo.svg";
 
 const Contact = () => {
   // git hub 주소
