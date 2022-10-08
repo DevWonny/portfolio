@@ -5,7 +5,6 @@ import BackCommon from "../components/BackCommon";
 import MailImage from "../assets/MailImage.svg";
 import PhoneImage from "../assets/PhoneImage.svg";
 import GitImage from "../assets/GitHub-Mark-120px-plus.png";
-import GitImageLight from "../assets/GitHub-Mark-Light-120px-plus.png";
 
 const Contact = () => {
   // git hub 주소
@@ -14,6 +13,11 @@ const Contact = () => {
 
   const location = useLocation();
 
+  // git page 새창 열기
+  const gitPage = () => {
+    window.open("https://github.com/DevWonny", "_blank");
+  };
+
   return (
     <>
       <BackCommon pathname={location.pathname} />
@@ -21,9 +25,9 @@ const Contact = () => {
         {/* GitHub */}
         <ContactContainer>
           <ContactLogo>
-            <img src={GitImage} alt="gitLogo" />
+            <img src={GitImage} alt="gitLogo" onClick={gitPage} />
           </ContactLogo>
-          <p>https://github.com/DevWonny</p>
+          <p onClick={gitPage}>https://github.com/DevWonny</p>
         </ContactContainer>
 
         {/* Email */}
@@ -39,7 +43,7 @@ const Contact = () => {
           <ContactLogo>
             <img src={PhoneImage} alt="phoneImage" />
           </ContactLogo>
-          <p>010-9243-9717</p>
+          <p>010 - 9243 - 9717</p>
         </ContactContainer>
       </ContactWrap>
     </>
@@ -54,19 +58,23 @@ const ContactWrap = styled.div`
   top: 250px;
   right: 5%;
   font-family: GmarketSansMedium;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ContactContainer = styled.div`
-  width: 100%;
+  width: 50%;
   height: 100px;
-  border: 2px solid #000;
-  box-sizing: border-box;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   & p {
+    color: #a0bdd0;
     font-size: 20px;
+    font-weight: 700;
   }
 `;
 
