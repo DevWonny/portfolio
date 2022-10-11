@@ -65,7 +65,7 @@ const IntroWarp = styled.div`
   right: 5%;
   font-family: GmarketSansMedium;
   font-size: 50px;
-  color: #a0bdd0;
+  color: #3a667f;
   display: flex;
   flex-direction: column;
   align-items: center;
