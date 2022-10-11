@@ -67,10 +67,12 @@ const ContactWrap = styled.div`
 const ContactContainer = styled.div`
   width: 50%;
   height: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 2px solid #3a667f;
   & p {
     color: #a0bdd0;
     font-size: 20px;
