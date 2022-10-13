@@ -7,6 +7,7 @@ import autonImage from "../assets/auton_Intro.jpg";
 import movieImage from "../assets/movie_image.PNG";
 import covidImage from "../assets/covid19_image.PNG";
 import pizzaImage from "../assets/pizza_image.PNG";
+import gitLogo from "../assets/GitLogo_Project.svg";
 
 const Project = () => {
   const location = useLocation();
@@ -14,6 +15,18 @@ const Project = () => {
   // Item 클릭 시 해당 Github 페이지로 이동되도록 설정
 
   // auton ios app link = https://apps.apple.com/kr/app/%EA%B3%B5%EC%9E%84%EB%B9%84%EA%B5%90/id1631117693
+
+  const gitPage = (page) => {
+    if (page === "movie") {
+      window.open("https://github.com/DevWonny/movieSearch");
+    }
+    if (page === "covid") {
+      window.open("https://github.com/DevWonny/Covid19_App");
+    }
+    if (page === "clone") {
+      window.open("https://github.com/DevWonny/CloneCoding_TypeScript");
+    }
+  };
   return (
     <>
       <BackCommon pathname={location.pathname} />
@@ -41,6 +54,15 @@ const Project = () => {
                 담당 역할 : 회원가입 및 차량등록, 수정 작업 / validation 작업 /
                 예약 페이지 작업 / 마이페이지 작업
               </p>
+              <ProjectAppLink
+                onClick={() =>
+                  window.open(
+                    "https://apps.apple.com/kr/app/%EA%B3%B5%EC%9E%84%EB%B9%84%EA%B5%90/id1631117693"
+                  )
+                }
+              >
+                ios Link
+              </ProjectAppLink>
             </ProjectContent>
           </ProjectItem>
 
@@ -54,6 +76,14 @@ const Project = () => {
               <p>공공 API를 활용한 영화 검색 페이지 제작</p>
               <p>기간 : 2022.08.03 ~ 2022.08.16</p>
               <p>개발 언어 : JavaScript , React</p>
+              <ProjectGitLink>
+                <img
+                  src={gitLogo}
+                  alt="gitLogo"
+                  onClick={() => gitPage("movie")}
+                />
+                <span onClick={() => gitPage("movie")}>Github</span>
+              </ProjectGitLink>
             </ProjectContent>
           </ProjectItem>
         </ProjectContainer>
@@ -69,6 +99,14 @@ const Project = () => {
               <p>공공 API를 활용한 코로나 정보 조회 페이지 제작</p>
               <p>기간 : 2022.08.17 ~ 2022.08.30</p>
               <p>개발 언어 : JavaScript, React</p>
+              <ProjectGitLink>
+                <img
+                  src={gitLogo}
+                  alt="gitLogo"
+                  onClick={() => gitPage("covid")}
+                />
+                <span onClick={() => gitPage("covid")}>Github</span>
+              </ProjectGitLink>
             </ProjectContent>
           </ProjectItem>
 
@@ -82,6 +120,14 @@ const Project = () => {
               <p>TypeScript와 MSW를 활용한 클론 코딩 작업</p>
               <p>기간 : 2022.09.05 ~ 2022.09.26</p>
               <p>개발 언어 : TypeScript, React</p>
+              <ProjectGitLink>
+                <img
+                  src={gitLogo}
+                  alt="gitLogo"
+                  onClick={() => gitPage("clone")}
+                />
+                <span onClick={() => gitPage("clone")}>Github</span>
+              </ProjectGitLink>
             </ProjectContent>
           </ProjectItem>
         </ProjectContainer>
@@ -148,4 +194,26 @@ const ProjectContent = styled.div`
   flex-direction: column;
   justify-content: center;
   color: #a0bdd0;
+  & p {
+    margin: 0 0 10px 0;
+  }
+`;
+
+const ProjectGitLink = styled.p`
+  display: flex;
+  align-items: center;
+
+  & span {
+    cursor: pointer;
+  }
+  & img {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+`;
+
+const ProjectAppLink = styled.p`
+  cursor: pointer;
 `;
