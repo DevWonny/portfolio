@@ -6,7 +6,6 @@ const Menu = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location.pathname === "/");
   return (
     <MenuWrap isMenu={props.isMenu}>
       <MenuContainer>

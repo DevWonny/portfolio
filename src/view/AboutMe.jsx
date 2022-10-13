@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import BackCommon from "../components/BackCommon";
-import AboutPicture from "../assets/AboutPicture.svg";
+// import AboutPicture from "../assets/AboutPicture.svg";
+
+import Header from "../components/Header";
 
 const AboutMe = () => {
   // 경력
@@ -17,7 +19,28 @@ const AboutMe = () => {
 
   const observeRef = useRef(null);
 
+  // stack animation 조건
   const [scrollState, setScrollState] = useState(false);
+
+  // 가로 Resize
+  const [resizeX, setResizeX] = useState(0);
+
+  const Resize = () => {
+    const handleResize = () => {
+      // console.log(window.innerWidth);
+      setResizeX(window.innerWidth);
+    };
+
+    useEffect(() => {
+      window.addEventListener("resize", handleResize);
+      return () => {
+        // cleanup
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+  };
+
+  Resize();
 
   // intersection
   // observer 활용해서 해당 ref 인식 시 animation 움직이도록
@@ -80,36 +103,55 @@ const AboutMe = () => {
   return (
     <>
       <BackCommon pathname={location.pathname} />
+      <Header />
       <AboutWarp>
         {/* profile section */}
         <AboutContainer>
-          <AboutTitle>Profile</AboutTitle>
+          <AboutTitle profile={true}>Profile</AboutTitle>
           <AboutPictureContainer>
-            <img src={AboutPicture} alt="picture" />
+            <img src="" alt="picture" />
           </AboutPictureContainer>
 
           <AboutProfileContainer>
             {/* 이름, 생년월일, 학교, 학원, 자격증 */}
             <AboutProfileText>
-              <b>Name :</b>
+              <b>Name </b>
               <p>윤철원</p>
             </AboutProfileText>
             <AboutProfileText>
-              <b>Birth :</b> <p>1994.02.16</p>
+              <b>Birth </b> <p>1994.02.16</p>
             </AboutProfileText>
             <AboutProfileText>
-              <b>Aducation :</b>
-              <p>
-                부산고등학교 졸업 / 동명대학교 전자 &#183; 의용공학부 졸업
-                <br />
-                SBS아카데미 컴퓨터아트학원 스마트기기UXUI디자인양성과정 교육
-                이수
-                <br />
-                코리아 IT 아카데미 프론트엔드 개발자 과정 이수
-              </p>
+              <b>Aducation </b>
+
+              {resizeX > 1200 ? (
+                // {/* PC Ver */}
+                <p>
+                  부산고등학교 졸업 / 동명대학교 전자 &#183; 의용공학부 졸업
+                  <br />
+                  SBS아카데미 컴퓨터아트학원 스마트기기UXUI디자인양성과정 교육
+                  이수
+                  <br />
+                  코리아 IT 아카데미 프론트엔드 개발자 과정 이수
+                </p>
+              ) : (
+                // {/* Mobile Ver */}
+                <p>
+                  부산고등학교 졸업
+                  <br />
+                  <br />
+                  동명대학교 전자 &middot; 의용공학부 졸업
+                  <br />
+                  <br />
+                  SBS아카데미 컴퓨터아트학원 스마트기기 UXUI 디자인 양성과정이수
+                  <br />
+                  <br />
+                  코리아 IT 아카데미 프론트엔드 개발자 과정 이수
+                </p>
+              )}
             </AboutProfileText>
             <AboutProfileText>
-              <b>Certificate :</b>
+              <b>Certificate </b>
               <p>
                 정보처리기사 <br />
                 웹디자인기능사
@@ -191,19 +233,35 @@ const AboutWarp = styled.div`
   border-top: 3px solid #3a667f;
   padding-top: 10px;
   font-family: GmarketSansMedium;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    top: 135px;
+    left: 0;
+    right: 0;
+    border: none;
+  }
 `;
 const AboutTitle = styled.span`
   position: absolute;
+  top: ${(props) => (props.profile ? "-50px" : "0")};
   left: 0;
   font-size: 40px;
   font-weight: 700;
   color: #a0bdd0;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 30px;
+    left: 30px;
+    top: 0;
+  }
 `;
 
 const AboutContainer = styled.div`
   width: 100%;
-  height: 400px;
   position: relative;
+  height: 400px;
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
 
@@ -216,20 +274,43 @@ const AboutContainer = styled.div`
     height: 2px;
     background-color: #a0bdd0;
   }
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    height: 700px;
+    &::after {
+      width: calc(100% - 30px);
+      left: 30px;
+    }
+  }
 `;
 
 const AboutPictureContainer = styled.div`
   width: 300px;
   height: 100%;
+
   & img {
     width: 100%;
     height: 100%;
+  }
+  @media screen and (max-width: 1200px) {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    top: 60px;
   }
 `;
 
 const AboutProfileContainer = styled.div`
   width: 700px;
   height: 100%;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    overflow: hidden;
+  }
 `;
 const AboutProfileText = styled.div`
   width: 100%;
@@ -244,8 +325,15 @@ const AboutProfileText = styled.div`
   & p {
     font-size: 16px;
     margin: 0;
+    font-weight: 300;
     padding-top: 3px;
     padding-left: 15px;
+    padding-right: 30px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    font-size: 14px;
+    padding-left: 30px;
   }
 `;
 
