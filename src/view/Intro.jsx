@@ -73,6 +73,12 @@ const IntroWarp = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    right: 0;
+    font-size: 30px;
+  }
+
   & span {
     position: relative;
     animation: ${textUp} 1.5s infinite;
