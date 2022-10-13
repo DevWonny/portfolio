@@ -179,44 +179,85 @@ const AboutMe = () => {
 
         <StackContainer ref={observeRef}>
           <AboutTitle>Stack</AboutTitle>
-          <StackItemWrap>
-            <StackItemContainer>
-              <StackItemTitle>HTML / CSS</StackItemTitle>
-              <StackItemPercent stack="HTML" ref={HtmlRef}>
-                <StackItemCenterPercent>95%</StackItemCenterPercent>
-              </StackItemPercent>
-            </StackItemContainer>
 
-            <StackItemContainer>
-              <StackItemTitle>JavaScript</StackItemTitle>
-              <StackItemPercent stack="JS" ref={JSRef}>
-                <StackItemCenterPercent>85%</StackItemCenterPercent>
-              </StackItemPercent>
-            </StackItemContainer>
+          {resizeX > 1200 ? (
+            <>
+              <StackItemWrap>
+                <StackItemContainer>
+                  <StackItemTitle>HTML / CSS</StackItemTitle>
+                  <StackItemPercent stack="HTML" ref={HtmlRef}>
+                    <StackItemCenterPercent>95%</StackItemCenterPercent>
+                  </StackItemPercent>
+                </StackItemContainer>
 
-            <StackItemContainer>
-              <StackItemTitle>React</StackItemTitle>
-              <StackItemPercent stack="REACT" ref={ReactRef}>
-                <StackItemCenterPercent>85%</StackItemCenterPercent>
-              </StackItemPercent>
-            </StackItemContainer>
-          </StackItemWrap>
+                <StackItemContainer>
+                  <StackItemTitle>JavaScript</StackItemTitle>
+                  <StackItemPercent stack="JS" ref={JSRef}>
+                    <StackItemCenterPercent>85%</StackItemCenterPercent>
+                  </StackItemPercent>
+                </StackItemContainer>
 
-          <StackItemWrap second={true}>
-            <StackItemContainer>
-              <StackItemTitle>JQuery</StackItemTitle>
-              <StackItemPercent stack="JQUERY" ref={JqueryRef}>
-                <StackItemCenterPercent>80%</StackItemCenterPercent>
-              </StackItemPercent>
-            </StackItemContainer>
+                <StackItemContainer>
+                  <StackItemTitle>React</StackItemTitle>
+                  <StackItemPercent stack="REACT" ref={ReactRef}>
+                    <StackItemCenterPercent>85%</StackItemCenterPercent>
+                  </StackItemPercent>
+                </StackItemContainer>
+              </StackItemWrap>
 
-            <StackItemContainer>
-              <StackItemTitle>TypeScript</StackItemTitle>
-              <StackItemPercent stack="TS" ref={TSRef}>
-                <StackItemCenterPercent>75%</StackItemCenterPercent>
-              </StackItemPercent>
-            </StackItemContainer>
-          </StackItemWrap>
+              <StackItemWrap second={true}>
+                <StackItemContainer>
+                  <StackItemTitle>JQuery</StackItemTitle>
+                  <StackItemPercent stack="JQUERY" ref={JqueryRef}>
+                    <StackItemCenterPercent>80%</StackItemCenterPercent>
+                  </StackItemPercent>
+                </StackItemContainer>
+
+                <StackItemContainer>
+                  <StackItemTitle>TypeScript</StackItemTitle>
+                  <StackItemPercent stack="TS" ref={TSRef}>
+                    <StackItemCenterPercent>75%</StackItemCenterPercent>
+                  </StackItemPercent>
+                </StackItemContainer>
+              </StackItemWrap>
+            </>
+          ) : (
+            <StackMobileWrap>
+              <StackItemContainer>
+                <StackItemTitle>HTML / CSS</StackItemTitle>
+                <StackItemPercent stack="HTML" ref={HtmlRef}>
+                  <StackItemCenterPercent>95%</StackItemCenterPercent>
+                </StackItemPercent>
+              </StackItemContainer>
+
+              <StackItemContainer>
+                <StackItemTitle>JavaScript</StackItemTitle>
+                <StackItemPercent stack="JS" ref={JSRef}>
+                  <StackItemCenterPercent>85%</StackItemCenterPercent>
+                </StackItemPercent>
+              </StackItemContainer>
+
+              <StackItemContainer>
+                <StackItemTitle>React</StackItemTitle>
+                <StackItemPercent stack="REACT" ref={ReactRef}>
+                  <StackItemCenterPercent>85%</StackItemCenterPercent>
+                </StackItemPercent>
+              </StackItemContainer>
+              <StackItemContainer>
+                <StackItemTitle>JQuery</StackItemTitle>
+                <StackItemPercent stack="JQUERY" ref={JqueryRef}>
+                  <StackItemCenterPercent>80%</StackItemCenterPercent>
+                </StackItemPercent>
+              </StackItemContainer>
+
+              <StackItemContainer>
+                <StackItemTitle>TypeScript</StackItemTitle>
+                <StackItemPercent stack="TS" ref={TSRef}>
+                  <StackItemCenterPercent>75%</StackItemCenterPercent>
+                </StackItemPercent>
+              </StackItemContainer>
+            </StackMobileWrap>
+          )}
         </StackContainer>
       </AboutWarp>
     </>
@@ -389,6 +430,10 @@ const StackContainer = styled.div`
   margin: 10px 0;
   padding-bottom: 70px;
   border-bottom: 3px solid #3a667f;
+
+  @media screen and (max-width: 1200px) {
+    border: none;
+  }
 `;
 
 const StackItemWrap = styled.div`
@@ -411,12 +456,31 @@ const StackItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 1200px) {
+    border: none;
+    padding-bottom: 30px;
+    width: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      width: calc(100% - 60px);
+      height: 1px;
+      background: #a0bdd0;
+    }
+  }
 `;
 
 const StackItemTitle = styled.p`
   font-size: 20px;
   font-weight: 700;
   color: #a0bdd0;
+  width: 100%;
+  text-align: center;
 `;
 
 const StackItemPercent = styled.div`
@@ -441,4 +505,13 @@ const StackItemCenterPercent = styled.div`
   line-height: 140px;
   font-size: 20px;
   transform: translate(-50%, -50%);
+`;
+
+const StackMobileWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  position: relative;
 `;
