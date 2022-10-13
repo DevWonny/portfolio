@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import Menu from "./Menu";
+
 const Header = () => {
   // menu state
   const [isMenu, setIsMenu] = useState(false);
 
   return (
-    <HeaderWrap>
-      <Hamburger
-        onClick={() => {
-          setIsMenu(!isMenu);
-        }}
-      >
-        <HamburgerTop isMenu={isMenu} />
-        <HamburgreMiddle isMenu={isMenu} />
-        <HamburgerBottom isMenu={isMenu} />
-      </Hamburger>
-    </HeaderWrap>
+    <>
+      <HeaderWrap>
+        <Hamburger
+          onClick={() => {
+            setIsMenu(!isMenu);
+          }}
+        >
+          <HamburgerTop isMenu={isMenu} />
+          <HamburgerMiddle isMenu={isMenu} />
+          <HamburgerBottom isMenu={isMenu} />
+        </Hamburger>
+      </HeaderWrap>
+
+      <Menu isMenu={isMenu} />
+    </>
   );
 };
 
@@ -31,6 +37,7 @@ const HeaderWrap = styled.div`
   top: 0;
   left: 0;
   display: flex;
+  z-index: 10;
   align-items: center;
   @media screen and (min-width: 1201px) {
     display: none;
@@ -58,7 +65,7 @@ const HamburgerTop = styled.span`
     props.isMenu ? "rotate(45deg)" : "translateY(-7px)"};
 `;
 
-const HamburgreMiddle = styled.span`
+const HamburgerMiddle = styled.span`
   position: absolute;
   width: 30px;
   height: 4px;
