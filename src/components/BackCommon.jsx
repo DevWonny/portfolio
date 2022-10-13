@@ -55,6 +55,9 @@ const BackCommonWrap = styled.div`
   width: 100%;
   position: absolute;
   z-index: -1;
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const MenuWrap = styled.div`

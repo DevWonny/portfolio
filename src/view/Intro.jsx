@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 import BackCommon from "../components/BackCommon";
+import Header from "../components/Header";
 
 const Intro = () => {
   const location = useLocation();
@@ -10,6 +11,7 @@ const Intro = () => {
   return (
     <>
       <BackCommon pathname={location.pathname} />
+      <Header />
       <IntroWarp>
         <div>
           <span>W</span>
