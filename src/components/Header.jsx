@@ -7,7 +7,6 @@ const Header = () => {
 
   return (
     <HeaderWrap>
-      <h1>Header Wrap</h1>
       <Hamburger
         onClick={() => {
           setIsMenu(!isMenu);
@@ -31,14 +30,16 @@ const HeaderWrap = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
   @media screen and (min-width: 1201px) {
     display: none;
   }
 `;
 
 const Hamburger = styled.div`
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   margin-left: 30px;
   position: relative;
   display: flex;
@@ -48,7 +49,7 @@ const Hamburger = styled.div`
 
 const HamburgerTop = styled.span`
   position: absolute;
-  width: 24px;
+  width: 30px;
   height: 4px;
   background: #d9d9d9;
   border-radius: 3px;
@@ -59,7 +60,7 @@ const HamburgerTop = styled.span`
 
 const HamburgreMiddle = styled.span`
   position: absolute;
-  width: 24px;
+  width: 30px;
   height: 4px;
   background-color: #d9d9d9;
   border-radius: 3px;
@@ -70,7 +71,7 @@ const HamburgreMiddle = styled.span`
 
 const HamburgerBottom = styled.span`
   position: absolute;
-  width: 24px;
+  width: 30px;
   height: 4px;
   background-color: #d9d9d9;
   border-radius: 3px;
