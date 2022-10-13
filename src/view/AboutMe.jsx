@@ -334,6 +334,7 @@ const AboutProfileText = styled.div`
   @media screen and (max-width: 1200px) {
     font-size: 14px;
     padding-left: 30px;
+    overflow: hidden;
   }
 `;
 
@@ -352,6 +353,15 @@ const CareerContainer = styled.div`
     height: 2px;
     background-color: #a0bdd0;
   }
+
+  @media screen and (max-width: 1200px) {
+    height: 120px;
+
+    &::after {
+      width: calc(100% - 30px);
+      left: 30px;
+    }
+  }
 `;
 
 const CareerText = styled.div`
@@ -363,6 +373,12 @@ const CareerText = styled.div`
   & span {
     margin-left: 35px;
     font-size: 14px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    left: 30px;
+    top: 30px;
   }
 `;
 
@@ -426,5 +442,3 @@ const StackItemCenterPercent = styled.div`
   font-size: 20px;
   transform: translate(-50%, -50%);
 `;
-
-const StackItemComents = styled.div``;
