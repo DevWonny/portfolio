@@ -51,7 +51,7 @@ const MenuWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition-duration: 1s;
+  transition-duration: 0.7s;
   transform: ${(props) =>
     props.isMenu ? "translateY(0)" : "translateY(-120%)"};
 `;
