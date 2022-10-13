@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import BackCommon from "../components/BackCommon";
-// import AboutPicture from "../assets/AboutPicture.svg";
+import AboutPicture from "../assets/AboutPicture.svg";
 
 import Header from "../components/Header";
 
@@ -56,7 +56,7 @@ const AboutMe = () => {
     let observer;
     if (observeRef.current) {
       observer = new IntersectionObserver(onIntersect, {
-        threshold: 0.8,
+        threshold: 0.4,
       });
       observer.observe(observeRef.current);
     }
@@ -109,7 +109,7 @@ const AboutMe = () => {
         <AboutContainer>
           <AboutTitle profile={true}>Profile</AboutTitle>
           <AboutPictureContainer>
-            <img src="" alt="picture" />
+            <img src={AboutPicture} alt="picture" />
           </AboutPictureContainer>
 
           <AboutProfileContainer>
@@ -320,7 +320,7 @@ const AboutContainer = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 0;
-    height: 700px;
+    height: 750px;
     &::after {
       width: calc(100% - 30px);
       left: 30px;
