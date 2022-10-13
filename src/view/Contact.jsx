@@ -6,6 +6,8 @@ import MailImage from "../assets/MailImage.svg";
 import PhoneImage from "../assets/PhoneImage.svg";
 import GitImage from "../assets/GitLogo.svg";
 
+import Header from "../components/Header";
+
 const Contact = () => {
   // git hub 주소
   // Email
@@ -21,6 +23,7 @@ const Contact = () => {
   return (
     <>
       <BackCommon pathname={location.pathname} />
+      <Header />
       <ContactWrap>
         {/* GitHub */}
         <ContactContainer>
@@ -62,6 +65,11 @@ const ContactWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    right: 0;
+  }
 `;
 
 const ContactContainer = styled.div`
@@ -78,6 +86,14 @@ const ContactContainer = styled.div`
     font-size: 20px;
     font-weight: 700;
   }
+
+  @media screen and (max-width: 1200px) {
+    width: 90%;
+
+    & p {
+      font-size: 14px;
+    }
+  }
 `;
 
 const ContactLogo = styled.div`
@@ -87,5 +103,10 @@ const ContactLogo = styled.div`
   & img {
     width: 100%;
     height: 100%;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 60px;
+    height: 60px;
   }
 `;

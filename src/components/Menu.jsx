@@ -1,14 +1,39 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Menu = (props) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location.pathname === "/");
   return (
     <MenuWrap isMenu={props.isMenu}>
       <MenuContainer>
-        <p>Intro</p>
-        <p>About Me</p>
-        <p>Project</p>
-        <p>Contact</p>
+        <MenuList
+          font={location.pathname === "/"}
+          onClick={() => navigate("/")}
+        >
+          Intro
+        </MenuList>
+        <MenuList
+          font={location.pathname === "/aboutme"}
+          onClick={() => navigate("/aboutme")}
+        >
+          About Me
+        </MenuList>
+        <MenuList
+          font={location.pathname === "/project"}
+          onClick={() => navigate("/project")}
+        >
+          Project
+        </MenuList>
+        <MenuList
+          font={location.pathname === "/contact"}
+          onClick={() => navigate("/contact")}
+        >
+          Contact
+        </MenuList>
       </MenuContainer>
     </MenuWrap>
   );
@@ -35,12 +60,13 @@ const MenuContainer = styled.div`
   width: 100%;
   height: 360px;
   font-size: 40px;
-  color: #d9d9d9;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  & p {
-    margin: 0;
-  }
+`;
+
+const MenuList = styled.p`
+  margin: 0;
+  color: ${(props) => (props.font ? "#E0A974" : "#E8EAE7")};
 `;
