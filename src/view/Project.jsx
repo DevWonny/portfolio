@@ -9,6 +9,8 @@ import covidImage from "../assets/covid19_image.PNG";
 import pizzaImage from "../assets/pizza_image.PNG";
 import gitLogo from "../assets/GitLogo_Project.svg";
 
+import Header from "../components/Header";
+
 const Project = () => {
   const location = useLocation();
   // 각 Project Item 에는 이미지 및 제작 기간등을 입력하고,
@@ -30,6 +32,7 @@ const Project = () => {
   return (
     <>
       <BackCommon pathname={location.pathname} />
+      <Header />
 
       <ProjectWrap>
         <ProjectContainer>
@@ -41,14 +44,10 @@ const Project = () => {
             <ProjectContent>
               <p>공임비교 Application</p>
               <p>
-                &middot; 유저의 차량 정보를 통해 회원가입하여, 유저 위치에 따라
-                차량 정비소의 정보를 조회하고 예약하는 Application
+                유저의 차량 정보를 통해 회원가입하여, 유저 위치에 따라 차량
+                정비소의 정보를 조회하고 예약하는 Application
               </p>
               <p>기간 : 2022.05 ~ 2022.08 (약 3개월)</p>
-              <p>
-                인원 : Back End - 2명 / Front End - 3명(1명 - ReactNative) /
-                Publisher - 1명 / Designer - 1명
-              </p>
               <p>개발 언어 : JavaScript , React</p>
               <p>
                 담당 역할 : 회원가입 및 차량등록, 수정 작업 / validation 작업 /
@@ -156,6 +155,19 @@ const ProjectWrap = styled.div`
     left: 0;
     background-color: #3a667f;
   }
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    right: 0;
+    top: 100px;
+    bottom: 0;
+    padding-top: 0;
+
+    &::after {
+      width: 0;
+      height: 0;
+    }
+  }
 `;
 
 const ProjectContainer = styled.div`
@@ -165,6 +177,11 @@ const ProjectContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    margin-bottom: 0px;
+  }
 `;
 
 const ProjectItem = styled.div`
@@ -175,6 +192,10 @@ const ProjectItem = styled.div`
   flex-direction: ${(props) => (props.mobile ? "row" : "column")};
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 const ProjectImage = styled.div`
