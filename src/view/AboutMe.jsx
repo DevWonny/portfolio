@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import BackCommon from "../components/BackCommon";
-import AboutPicture from "../assets/AboutPicture.svg";
+import AboutPicture from "../assets/AboutPicture.png";
 
 import Header from "../components/Header";
 
@@ -23,7 +23,7 @@ const AboutMe = () => {
   const [scrollState, setScrollState] = useState(false);
 
   // 가로 Resize
-  const [resizeX, setResizeX] = useState(0);
+  const [resizeX, setResizeX] = useState(1920);
 
   const Resize = () => {
     const handleResize = () => {
@@ -41,7 +41,6 @@ const AboutMe = () => {
   };
 
   Resize();
-
   // intersection
   // observer 활용해서 해당 ref 인식 시 animation 움직이도록
   const onIntersect = async ([entry], observer) => {
