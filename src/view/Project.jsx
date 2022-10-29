@@ -7,6 +7,7 @@ import autonImage from "../assets/auton_Intro.jpg";
 import movieImage from "../assets/movie_image.PNG";
 import covidImage from "../assets/covid19_image.PNG";
 import pizzaImage from "../assets/pizza_image.PNG";
+import diaryImage from "../assets/diary_image.png";
 import gitLogo from "../assets/GitLogo_Project.svg";
 
 import Header from "../components/Header";
@@ -15,8 +16,6 @@ const Project = () => {
   const location = useLocation();
   // 각 Project Item 에는 이미지 및 제작 기간등을 입력하고,
   // Item 클릭 시 해당 Github 페이지로 이동되도록 설정
-
-  // auton ios app link = https://apps.apple.com/kr/app/%EA%B3%B5%EC%9E%84%EB%B9%84%EA%B5%90/id1631117693
 
   const gitPage = (page) => {
     if (page === "movie") {
@@ -27,6 +26,9 @@ const Project = () => {
     }
     if (page === "clone") {
       window.open("https://github.com/DevWonny/CloneCoding_TypeScript");
+    }
+    if (page === "diary") {
+      window.open("https://github.com/DevWonny/picture_project");
     }
   };
   return (
@@ -126,6 +128,30 @@ const Project = () => {
                   onClick={() => gitPage("clone")}
                 />
                 <span onClick={() => gitPage("clone")}>Github</span>
+              </ProjectGitLink>
+            </ProjectContent>
+          </ProjectItem>
+        </ProjectContainer>
+
+        <ProjectContainer>
+          <ProjectItem mobile={true}>
+            <ProjectImage mobile={true}>
+              <img src={diaryImage} alt="diary_project" />
+            </ProjectImage>
+            <ProjectContent>
+              <p>다이어리 Application</p>
+              <p>TypeScript를 활용한 다이어리 어플리케이션</p>
+              <p>기간 : 2022.10.17 ~ 2022.10.28</p>
+              <p>
+                개발 언어 : FrontEnd - TypeScript, React / BackEnd - Node.js
+              </p>
+              <ProjectGitLink>
+                <img
+                  src={gitLogo}
+                  alt="gitLogo"
+                  onClick={() => gitPage("diary")}
+                />
+                <span onClick={() => gitPage("diary")}>Github</span>
               </ProjectGitLink>
             </ProjectContent>
           </ProjectItem>
